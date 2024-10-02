@@ -1,55 +1,63 @@
+
 export default function Gallery() {
+  const profiles = [
+    {
+      name: 'Maria Skłodowska-Curie',
+      imageUrl: 'https://i.imgur.com/szV5sdGs.jpg',
+      profession:'physicist and chemist',
+      awards: 4,
+      discovered: 'polonium (element)'
+    },
+
+    {
+      name: 'Katsuko Saruhashi',
+      imageUrl: 'https://i.imgur.com/YfeOqp2s.jpg',
+      profession: 'geochemist',
+      awards: 2,
+      discovered: 'a method for measuring carbon dioxide in seawater',
+    },
+  ];
+  
   return (
     <div>
       <h1>Notable Scientists</h1>
-      <section className="profile">
-        <h2>Maria Skłodowska-Curie</h2>
-        <img
-          className="avatar"
-          src='https://i.imgur.com/szV5sdGs.jpg'
-          alt="Maria Skłodowska-Curie"
-          width={70}
-          height={70}
-        />
-        <ul>
-          <li>
-            <b>Profession: </b>
-            physicist and chemist
-          </li>
-          <li>
-            <b>Awards: 4 </b>
-            (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)
-          </li>
-          <li>
-            <b>Discovered: </b>
-            polonium (element)
-          </li>
-        </ul>
-      </section>
-      <section className="profile">
-        <h2>Katsuko Saruhashi</h2>
-        <img
-          className="avatar"
-          src='https://i.imgur.com/YfeOqp2s.jpg'
-          alt="Katsuko Saruhashi"
-          width={70}
-          height={70}
-        />
-        <ul>
-          <li>
-            <b>Profession: </b>
-            geochemist
-          </li>
-          <li>
-            <b>Awards: 2 </b>
-            (Miyake Prize for geochemistry, Tanaka Prize)
-          </li>
-          <li>
-            <b>Discovered: </b>
-            a method for measuring carbon dioxide in seawater
-          </li>
-        </ul>
-      </section>
-    </div>
+      {profiles.map((profile) => (
+        <Profile key={profile.name} {...profile} />
+    ))}
+  </div>
+);
+}
+
+interface Profile {
+  name: string;
+  imageUrl: string;
+  profession: string;
+  awards: number;
+  discovered: string;
+}
+
+function Profile({ name, imageUrl, profession, awards, discovered }: Profile) {
+  return (
+    <section className="profile">
+      <h2>{name}</h2>
+      <img
+        className="avatar"
+        src={imageUrl}
+        alt={name}
+        width={70}
+        height={70}
+      />
+      <ul>
+        <li>
+          <b>Profession: </b> {profession}
+        </li>
+        <li>
+          <b>Awards: </b> {awards}
+        </li>
+        <li>
+          <b>Discovered: </b> {discovered}
+        </li>
+      </ul>
+    </section>
   );
 }

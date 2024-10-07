@@ -1,7 +1,6 @@
 ## Personal Information:
 
-Full Name: Enter Your Full Name
-
+Full Name: Nihar Baddigam
 ## Getting Started
 First, fork this repository and clone it to your local machine.
 

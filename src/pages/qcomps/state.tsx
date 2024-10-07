@@ -5,8 +5,13 @@ export default function Gallery() {
   const [index, setIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
 
+  // bug: does not identify the end of the index
+  // solution: add if statement to ensure index is valid
+
   function handleNextClick() {
+    if (index < sculptureList.length - 1) {
     setIndex(index + 1);
+    }
   }
 
   function handleMoreClick() {

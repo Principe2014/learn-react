@@ -13,6 +13,12 @@ export default function Gallery() {
     setShowMore(!showMore);
   }
 
+  //BUG: Script doesn't handle the case when sculpturelist is empty.
+
+  if (sculptureList.length === 0) {
+    return <p>No sculptures available!</p>
+  }
+
   let sculpture = sculptureList[index];
   return (
     <>

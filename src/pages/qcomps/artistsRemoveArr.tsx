@@ -11,16 +11,24 @@ export default function List() {
     initialArtists
   );
 
+  // fixes splice modifying original array, instead of creating a new array with the updated
+  // list
+  const onDelete = (index: number) => {
+    const newList = {...artists};
+    newList.splice(index, 1);
+    setArtists(newList);
+  };
+
   return (
     <>
       <h1>Inspiring sculptors:</h1>
       <ul>
-        {artists.map(artist => (
+        {artists.map((artist, index) => (
           <li key={artist.id}>
             {artist.name}{' '}
-            <button onClick={() => {
-              artists.splice(artist.id, 1)
-            }}>
+            <button onClick={() => 
+              onDelete(artist.id)
+            }>
               Delete
             </button>
           </li>
